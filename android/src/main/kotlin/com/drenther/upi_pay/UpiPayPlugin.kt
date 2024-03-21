@@ -80,7 +80,7 @@ class UpiPayPlugin internal constructor(registrar: Registrar, channel: MethodCha
         return
       }
 
-      activity.startActivityForResult(intent, requestCodeNumber)
+      activity?.startActivityForResult(intent, requestCodeNumber)
     } catch (ex: Exception) {
       Log.e("upi_pay", ex.toString())
       this.success("failed_to_open_app")
@@ -94,7 +94,7 @@ class UpiPayPlugin internal constructor(registrar: Registrar, channel: MethodCha
     val uri = uriBuilder.build()
     val intent = Intent(Intent.ACTION_VIEW, uri)
 
-    val packageManager = activity.packageManager
+    val packageManager = activity?.packageManager
 
     try {
       val activities = packageManager.queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY)
